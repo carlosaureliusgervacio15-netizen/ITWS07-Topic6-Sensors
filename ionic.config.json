@@ -1,0 +1,7 @@
+{
+  "name": "motion-dice",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Motion Dice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page">
+
+    <ion-card class="hero-card">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="dice-outline"></ion-icon>
+          Motion Dice
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="subtitle">Shake your phone and watch the die roll. The final face comes from the API.</p>
+
+        <div class="dice" [class.rolling]="rolling">
+          {{ diceFace }}
+        </div>
+
+        <div class="result">
+          <span>Final API Result</span>
+          <strong>{{ diceValue }}</strong>
+        </div>
+
+        <ion-button expand="block" (click)="rollDice()" [disabled]="rolling">
+          {{ rolling ? 'Rolling...' : 'Roll Dice' }}
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="speedometer-outline"></ion-icon>
+          Shake Sensitivity
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="sensitivity-row">
+          <ion-label>Low</ion-label>
+          <ion-badge>{{ sensitivity }}/10</ion-badge>
+          <ion-label>High</ion-label>
+        </div>
+
+        <ion-range
+          [min]="1"
+          [max]="10"
+          [step]="1"
+          [(ngModel)]="sensitivity"
+          aria-label="Shake sensitivity">
+        </ion-range>
+
+        <p class="hint">
+          Higher sensitivity means a lighter shake can roll the dice.
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="phone-portrait-outline"></ion-icon>
+          Motion Sensor
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="status">
+          <span class="dot" [class.active]="shakeDetected"></span>
+          {{ shakeDetected ? 'Shake detected!' : 'Waiting for movement...' }}
+        </div>
+
+        <div class="sensor-grid">
+          <div>X <strong>{{ accel.x.toFixed(1) }}</strong></div>
+          <div>Y <strong>{{ accel.y.toFixed(1) }}</strong></div>
+          <div>Z <strong>{{ accel.z.toFixed(1) }}</strong></div>
+        </div>
+
+        <p>{{ lastShake }}</p>
+        <p><strong>Shakes:</strong> {{ shakeCount }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="api-card">
+      <ion-card-content>
+        <strong>API:</strong> {{ apiStatus }}
+        <br />
+        <small>{{ apiUrl }}</small>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

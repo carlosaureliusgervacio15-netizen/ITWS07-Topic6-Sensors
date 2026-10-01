@@ -1,0 +1,113 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.hero-card {
+  text-align: center;
+}
+
+ion-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #666;
+}
+
+.dice {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: #111;
+  font-size: 105px;
+  line-height: 1;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  user-select: none;
+}
+
+.dice.rolling {
+  animation: diceRoll 0.12s infinite;
+}
+
+@keyframes diceRoll {
+  0% { transform: rotate(-12deg) scale(0.94); }
+  50% { transform: rotate(12deg) scale(1.05); }
+  100% { transform: rotate(-12deg) scale(0.94); }
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.result span {
+  color: #777;
+}
+
+.result strong {
+  font-size: 42px;
+}
+
+.sensitivity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hint {
+  font-size: 13px;
+  color: #777;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #999;
+}
+
+.dot.active {
+  background: #2dd36f;
+  box-shadow: 0 0 10px rgba(45, 211, 111, 0.7);
+}
+
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.sensor-grid div {
+  padding: 10px;
+  border-radius: 10px;
+  background: #f1f1f1;
+  text-align: center;
+}
+
+.sensor-grid strong {
+  display: block;
+  margin-top: 5px;
+}
+
+.api-card small {
+  word-break: break-all;
+  color: #777;
+}
